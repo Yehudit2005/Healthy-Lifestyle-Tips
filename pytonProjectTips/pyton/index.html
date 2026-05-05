@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Lifestyle Tips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #f5f5f0 0%, #e8e4dc 50%, #d4cfc4 100%);
+            min-height: 100vh;
+            color: #4a4a4a;
+        }
+
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 3rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 115, 85, 0.2);
+        }
+
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            align-items: center;
+        }
+
+
+        nav a {
+            text-decoration: none;
+            color: #8b7355;
+            font-weight: 400;
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+
+        nav a:hover {
+            color: #6b5744;
+            transform: translateY(-2px);
+        }
+
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: #8b7355;
+            transition: width 0.3s ease;
+        }
+
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+
+        section {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+
+        section.active {
+            display: block;
+        }
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        #home {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 240, 0.9));
+            border-radius: 20px;
+            padding: 5rem 4rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin-bottom: 4rem;
+            border: 1px solid rgba(139, 115, 85, 0.15);
+        }
+
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #6b5744;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #7a7a7a;
+            line-height: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(245, 245, 240, 0.85));
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(139, 115, 85, 0.15);
+        }
+
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(139, 115, 85, 0.15);
+            border-color: rgba(139, 115, 85, 0.3);
+        }
+
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            filter: grayscale(30%);
+        }
+
+
+        .feature-card h3 {
+            color: #6b5744;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+
+        .feature-card p {
+            color: #7a7a7a;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+
+        #tips {
+            padding: 2rem;
+        }
+
+
+        .tips-header {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 240, 0.9));
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 1px solid rgba(139, 115, 85, 0.15);
+        }
+
+
+        .tips-header h2 {
+            color: #6b5744;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+
+        .category-btn {
+            background: rgba(139, 115, 85, 0.08);
+            color: #8b7355;
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+
+        .category-btn:hover {
+            background: rgba(139, 115, 85, 0.15);
+            border-color: #8b7355;
+            transform: translateY(-2px);
+        }
+
+
+        .category-btn.active {
+            background: #8b7355;
+            color: white;
+            border-color: #8b7355;
+        }
+
+
+        .add-tip-btn {
+            background: #6b5744;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+
+        .add-tip-btn:hover {
+            background: #8b7355;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(107, 87, 68, 0.3);
+        }
+
+
+        .tips-stage {
+            position: relative;
+            height: 700px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(245, 245, 240, 0.4));
+            border-radius: 20px;
+            border: 1px solid rgba(139, 115, 85, 0.1);
+        }
+
+
+        .tip-card {
+            position: absolute;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(250, 248, 245, 0.95));
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+
+        .tip-card:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 20px 70px rgba(139, 115, 85, 0.25);
+            border-color: #8b7355;
+            z-index: 50 !important;
+        }
+
+
+        .tip-card h3 {
+            color: #6b5744;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+
+        .tip-card p {
+            color: #7a7a7a;
+            font-size: 1rem;
+            line-height: 1.5;
+            font-weight: 300;
+            text-align: center;
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+
+        .modal.active {
+            display: flex;
+        }
+
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(245, 245, 240, 0.98));
+            padding: 4rem;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 25px 100px rgba(0,0,0,0.5);
+            animation: slideUp 0.4s ease;
+            position: relative;
+            border: 1px solid rgba(139, 115, 85, 0.3);
+        }
+
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+
+        .modal-content h2 {
+            color: #6b5744;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+        }
+
+
+        .modal-content p {
+            color: #5a5a5a;
+            font-size: 1.3rem;
+            line-height: 2;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            color: #8b7355;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+
+        .close-modal:hover {
+            color: #6b5744;
+            transform: rotate(90deg);
+        }
+
+
+        .delete-tip-btn {
+            background: #c85050;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+
+        .delete-tip-btn:hover {
+            background: #a04040;
+            transform: translateY(-2px);
+        }
+
+
+        .edit-tip-btn {
+            background: #6b5744;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+
+        .edit-tip-btn:hover {
+            background: #8b7355;
+            transform: translateY(-2px);
+        }
+
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+
+        .form-group label {
+            display: block;
+            color: #6b5744;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(139, 115, 85, 0.3);
+            border-radius: 8px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+
+        .submit-btn {
+            background: #6b5744;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+
+        .submit-btn:hover {
+            background: #8b7355;
+            transform: translateY(-2px);
+        }
+
+
+        .cancel-btn {
+            background: #999;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+
+        .cancel-btn:hover {
+            background: #777;
+        }
+
+
+        #about {
+            padding: 2rem;
+        }
+
+
+        .about-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 240, 0.9));
+            padding: 5rem 4rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border: 1px solid rgba(139, 115, 85, 0.15);
+        }
+
+
+        .about-content h2 {
+            color: #6b5744;
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+
+        .about-content p {
+            font-size: 1.3rem;
+            color: #7a7a7a;
+            line-height: 2.2;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+
+        #contact {
+            padding: 2rem;
+        }
+
+
+        .contact-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 240, 0.9));
+            padding: 5rem 4rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid rgba(139, 115, 85, 0.15);
+        }
+
+
+        .contact-content h2 {
+            color: #6b5744;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+
+        .contact-content > p {
+            color: #7a7a7a;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+
+        .contact-card {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(139, 115, 85, 0.1), rgba(107, 87, 68, 0.1));
+            border-radius: 15px;
+            color: #5a5a5a;
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            transition: all 0.3s ease;
+        }
+
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: #8b7355;
+        }
+
+
+        .contact-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #6b5744;
+            font-weight: 400;
+        }
+
+
+        .contact-card p {
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #8b7355;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+
+        .error {
+            background: rgba(200, 100, 100, 0.15);
+            color: #a05050;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            text-align: center;
+            border: 1px solid rgba(200, 100, 100, 0.2);
+        }
+
+
+        #chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            direction: rtl;
+        }
+
+
+        #chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #6b5744;
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+
+
+        #chat-button:hover { transform: scale(1.1); }
+
+
+        #chat-window {
+            display: none;
+            width: 300px;
+            height: 400px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            flex-direction: column;
+            overflow: hidden;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            border: 1px solid #8b7355;
+        }
+
+
+        #chat-header {
+            background: #6b5744;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+        #chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+
+        .message { padding: 8px 12px; border-radius: 10px; max-width: 80%; }
+        .bot-msg { background: #f0ede9; align-self: flex-start; }
+        .user-msg { background: #8b7355; color: white; align-self: flex-end; }
+
+
+        #chat-input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+
+
+        #chat-input {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 12px;
+            outline: none;
+        }
+
+
+        #send-btn {
+            background: none;
+            border: none;
+            color: #6b5744;
+            cursor: pointer;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" data-section="home">Home</a></li>
+            <li><a href="#" data-section="tips">All Tips</a></li>
+            <li><a href="#" data-section="about">About Us</a></li>
+            <li><a href="#" data-section="contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <section id="home" class="active">
+            <div class="hero">
+                <h1>Healthy Lifestyle Tips</h1>
+                <p>Discover expert advice and practical wisdom to transform your daily routine into a healthier, more balanced lifestyle. From nutrition and sleep to mental wellness and natural remedies, we guide you on your journey to optimal health.</p>
+            </div>
+
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">💤</div>
+                    <h3>Sleep & Recovery</h3>
+                    <p>Optimize your rest with proven techniques for better sleep quality and rejuvenation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🥗</div>
+                    <h3>Balanced Nutrition</h3>
+                    <p>Learn sustainable eating habits that nourish your body and support your goals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>Fitness & Strength</h3>
+                    <p>Build muscle and improve endurance with expert workout guidance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧘</div>
+                    <h3>Mental Wellness</h3>
+                    <p>Enhance focus and reduce stress through mindfulness and healthy habits.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Natural Remedies</h3>
+                    <p>Explore time-tested natural solutions for everyday health challenges.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Daily Wellness</h3>
+                    <p>Simple lifestyle changes that create lasting positive impact.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="tips">
+            <div class="tips-header">
+                <h2>Explore Our Health Tips</h2>
+                <p style="color: #7a7a7a; font-size: 1.1rem; margin-bottom: 2rem;">Click on any tip to learn more</p>
+
+
+                <div class="category-filter">
+                    <button class="category-btn active" data-category="all">All Tips</button>
+                    <button class="category-btn" data-category="שינה והתאוששות">Sleep & Recovery</button>
+                    <button class="category-btn" data-category="תזונה יומיומית מאוזנת">Nutrition</button>
+                    <button class="category-btn" data-category="ירידה במשקל">Weight Loss</button>
+                    <button class="category-btn" data-category="חיזוק שרירים וכושר">Fitness</button>
+                    <button class="category-btn" data-category="טיפוח עור והיגיינה">Skincare</button>
+                    <button class="category-btn" data-category="טיפים טבעיים">Natural Tips</button>
+                    <button class="category-btn" data-category="ריכוז ובריאות מנטלית">Mental Health</button>
+                    <button class="category-btn" data-category="אורח חיים בריא">Lifestyle</button>
+                    <button class="category-btn" data-category="תרופות סבתא">Remedies</button>
+                </div>
+
+
+                <button class="add-tip-btn" onclick="openAddTipModal()">+ Add New Tip</button>
+            </div>
+            <div class="tips-stage" id="tipsStage">
+                <div class="loading">Loading tips...</div>
+            </div>
+        </section>
+
+
+        <section id="about">
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>We are passionate advocates for healthy living and holistic wellness. Our mission is to empower individuals with practical, evidence-based advice that makes healthy living accessible to everyone.</p>
+                <p>Our team of wellness experts curates tips across multiple categories including sleep optimization, balanced nutrition, fitness training, mental health, natural remedies, and daily wellness practices.</p>
+                <p>We believe that small, consistent changes lead to remarkable transformations. Whether you're just beginning your wellness journey or looking to enhance your existing routine, our comprehensive collection of tips is designed to support you every step of the way.</p>
+            </div>
+        </section>
+
+
+        <section id="contact">
+            <div class="contact-content">
+                <h2>Get In Touch</h2>
+                <p>We'd love to hear from you! Reach out for questions, suggestions, or partnerships.</p>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3>📧 Email</h3>
+                        <p>info@healthylifestyle.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>📍 Address</h3>
+                        <p>123 Wellness Street<br>Healthy City, HC 12345</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>📱 Phone</h3>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="modal" id="tipModal">
+        <div class="modal-content" id="modalContent">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button class="delete-tip-btn" id="deleteTipBtn" onclick="deleteTip()">Delete Tip</button>
+                <button class="edit-tip-btn" id="editTipBtn" onclick="openEditTipModal()">Edit Tip</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="addTipModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeAddTipModal()">×</button>
+            <h2>Add New Tip</h2>
+            <form id="addTipForm" onsubmit="submitNewTip(event)">
+                <div class="form-group">
+                    <label for="tipTitle">Title:</label>
+                    <input type="text" id="tipTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipDescription">Description:</label>
+                    <textarea id="tipDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tipCategory">Category:</label>
+                    <select id="tipCategory" required>
+                        <option value="1">שינה והתאוששות</option>
+                        <option value="2">תזונה יומיומית מאוזנת</option>
+                        <option value="3">ירידה במשקל</option>
+                        <option value="4">חיזוק שרירים וכושר</option>
+                        <option value="5">טיפוח עור והיגיינה</option>
+                        <option value="6">טיפים טבעיים</option>
+                        <option value="7">ריכוז ובריאות מנטלית</option>
+                        <option value="8">אורח חיים בריא</option>
+                        <option value="9">תרופות סבתא</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="cancel-btn" onclick="closeAddTipModal()">Cancel</button>
+                    <button type="submit" class="submit-btn">Add Tip</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="modal" id="editTipModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeEditTipModal()">×</button>
+            <h2>Edit Tip</h2>
+            <form id="editTipForm" onsubmit="submitEditTip(event)">
+                <div class="form-group">
+                    <label for="editTipTitle">Title:</label>
+                    <input type="text" id="editTipTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="editTipDescription">Description:</label>
+                    <textarea id="editTipDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editTipCategory">Category:</label>
+                    <select id="editTipCategory" required>
+                        <option value="1">שינה והתאוששות</option>
+                        <option value="2">תזונה יומיומית מאוזנת</option>
+                        <option value="3">ירידה במשקל</option>
+                        <option value="4">חיזוק שרירים וכושר</option>
+                        <option value="5">טיפוח עור והיגיינה</option>
+                        <option value="6">טיפים טבעיים</option>
+                        <option value="7">ריכוז ובריאות מנטלית</option>
+                        <option value="8">אורח חיים בריא</option>
+                        <option value="9">תרופות סבתא</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="cancel-btn" onclick="closeEditTipModal()">Cancel</button>
+                    <button type="submit" class="submit-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="chat-widget">
+        <button id="chat-button" onclick="toggleChat()">🤖</button>
+        <div id="chat-window">
+            <div id="chat-header">
+                <span>עוזר בריאות אישי</span>
+                <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;">✕</button>
+            </div>
+            <div id="chat-messages">
+                <div class="message bot-msg">היי! איך אפשר לעזור לך היום?</div>
+            </div>
+            <div id="chat-input-area">
+                <input type="text" id="chat-input" placeholder="כתוב שאלה...">
+                <button id="send-btn" onclick="sendMessage()">שלח</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const API_BASE = 'http://127.0.0.1:8000';
+        let allTips = [];
+        let filteredTips = [];
+        let animationInterval;
+        let activeCards = [];
+        let currentTipId = null;
+
+
+        // Navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = e.target.getAttribute('data-section');
+                document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+                document.getElementById(sectionId).classList.add('active');
+
+
+                if (sectionId === 'tips' && allTips.length === 0) {
+                    loadTips();
+                }
+            });
+        });
+
+
+        // Category filter
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+
+
+                const category = e.target.getAttribute('data-category');
+
+
+                if (category === 'all') {
+                    filteredTips = allTips;
+                } else {
+                    try {
+                        const response = await fetch(`${API_BASE}/tips/category/${encodeURIComponent(category)}`);
+                        if (!response.ok) throw new Error('Failed to fetch category tips');
+                        filteredTips = await response.json();
+                    } catch (error) {
+                        console.error('Error:', error);
+                        filteredTips = [];
+                    }
+                }
+
+
+                clearInterval(animationInterval);
+                displayTipsAnimation();
+            });
+        });
+
+
+        // Load all tips
+        async function loadTips() {
+            try {
+                const response = await fetch(`${API_BASE}/tips`);
+                if (!response.ok) throw new Error('Failed to fetch tips');
+
+
+                allTips = await response.json();
+                filteredTips = allTips;
+                displayTipsAnimation();
+            } catch (error) {
+                document.getElementById('tipsStage').innerHTML =
+                    `<div class="error">Error loading tips. Please make sure the Python server is running on ${API_BASE}</div>`;
+                console.error('Error:', error);
+            }
+        }
+
+
+        // Display tips with animation
+        function displayTipsAnimation() {
+            const stage = document.getElementById('tipsStage');
+            stage.innerHTML = '';
+            activeCards = [];
+
+
+            if (filteredTips.length === 0) {
+                stage.innerHTML = '<div class="loading">No tips found in this category</div>';
+                return;
+            }
+
+
+            const cardsToShow = Math.min(8, filteredTips.length);
+
+
+            for (let i = 0; i < cardsToShow; i++) {
+                createTipCard(filteredTips[i], stage);
+            }
+
+
+            let currentIndex = cardsToShow;
+
+
+            animationInterval = setInterval(() => {
+                if (activeCards.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * activeCards.length);
+                    const cardToRemove = activeCards[randomIndex];
+
+
+                    cardToRemove.style.opacity = '0';
+                    cardToRemove.style.transform = `translate(${Math.random() * 300 - 150}px, ${Math.random() * 300 - 150}px) scale(0) rotate(${Math.random() * 720 - 360}deg)`;
+
+
+                    setTimeout(() => {
+                        if (cardToRemove.parentNode) {
+                            cardToRemove.parentNode.removeChild(cardToRemove);
+                        }
+                        activeCards.splice(randomIndex, 1);
+                    }, 500);
+
+
+                    setTimeout(() => {
+                        const nextTip = filteredTips[currentIndex % filteredTips.length];
+                        createTipCard(nextTip, stage);
+                        currentIndex++;
+                    }, 300);
+                }
+            }, 1400);
+        }
+
+
+        function createTipCard(tip, container) {
+            const card = document.createElement('div');
+            card.className = 'tip-card';
+
+
+            const width = 220 + Math.random() * 180;
+            const height = 180 + Math.random() * 120;
+
+
+            const maxX = container.offsetWidth - width - 20;
+            const maxY = container.offsetHeight - height - 20;
+            const x = Math.random() * maxX + 10;
+            const y = Math.random() * maxY + 10;
+
+
+            card.style.width = width + 'px';
+            card.style.height = height + 'px';
+            card.style.left = x + 'px';
+            card.style.top = y + 'px';
+            card.style.zIndex = Math.floor(Math.random() * 20);
+
+
+            const rotation = (Math.random() - 0.5) * 20;
+            card.style.transform = `rotate(${rotation}deg) scale(0)`;
+            card.style.opacity = '0';
+
+
+            card.innerHTML = `
+                <h3>${tip.description}</h3>
+            `;
+
+
+            card.onclick = () => showTipDetail(tip.id, tip.title, tip.description);
+            container.appendChild(card);
+            activeCards.push(card);
+
+
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                card.style.opacity = '1';
+                card.style.transform = `rotate(${rotation}deg) scale(1)`;
+            }, 50);
+        }
+
+
+        // Show tip details
+        function showTipDetail(id, title, description) {
+            currentTipId = id;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDescription').textContent = description;
+            document.getElementById('tipModal').classList.add('active');
+            clearInterval(animationInterval);
+        }
+
+
+        // Open edit tip modal
+        function openEditTipModal() {
+            const title = document.getElementById('modalTitle').textContent;
+            const description = document.getElementById('modalDescription').textContent;
+
+            document.getElementById('editTipTitle').value = title;
+            document.getElementById('editTipDescription').value = description;
+
+            document.getElementById('tipModal').classList.remove('active');
+            document.getElementById('editTipModal').classList.add('active');
+        }
+
+
+        // Close edit tip modal - ✅ תוקן! הוספתי currentTipId = null
+        function closeEditTipModal() {
+            document.getElementById('editTipModal').classList.remove('active');
+            document.getElementById('editTipForm').reset();
+            currentTipId = null;
+            displayTipsAnimation();
+        }
+
+
+        // Submit edit tip
+        async function submitEditTip(event) {
+            event.preventDefault();
+
+
+            const title = document.getElementById('editTipTitle').value;
+            const description = document.getElementById('editTipDescription').value;
+            const category_id = parseInt(document.getElementById('editTipCategory').value);
+
+
+            try {
+                const response = await fetch(`${API_BASE}/tips/${currentTipId}?category=${category_id}&title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+
+                if (!response.ok) throw new Error('Failed to update tip');
+
+
+                alert('Tip updated successfully!');
+                currentTipId = null;
+                closeEditTipModal();
+                await loadTips();
+            } catch (error) {
+                alert('Error updating tip');
+                console.error('Error:', error);
+            }
+        }
+
+
+        // Close modal - ✅ תוקן! הסרתי currentTipId = null מכאן
+        function closeModal() {
+            document.getElementById('tipModal').classList.remove('active');
+            displayTipsAnimation();
+        }
+
+
+        // Close modal on background click
+        document.getElementById('tipModal').addEventListener('click', (e) => {
+            if (e.target.id === 'tipModal') {
+                closeModal();
+            }
+        });
+
+
+        // Delete tip - ✅ תוקן! הזרתי currentTipId = null לפני closeModal
+        async function deleteTip() {
+            if (!currentTipId) return;
+
+            if (!confirm('Are you sure you want to delete this tip?')) return;
+
+
+            try {
+                const response = await fetch(`${API_BASE}/tips/${currentTipId}`, {
+                    method: 'DELETE'
+                });
+
+
+                if (!response.ok) throw new Error('Failed to delete tip');
+
+
+                alert('Tip deleted successfully!');
+                currentTipId = null;
+                closeModal();
+                await loadTips();
+            } catch (error) {
+                alert('Error deleting tip');
+                console.error('Error:', error);
+            }
+        }
+
+
+        // Open add tip modal
+        function openAddTipModal() {
+            document.getElementById('addTipModal').classList.add('active');
+            clearInterval(animationInterval);
+        }
+
+
+        // Close add tip modal
+        function closeAddTipModal() {
+            document.getElementById('addTipModal').classList.remove('active');
+            document.getElementById('addTipForm').reset();
+            displayTipsAnimation();
+        }
+
+
+        // Submit new tip
+        async function submitNewTip(event) {
+            event.preventDefault();
+
+
+            const title = document.getElementById('tipTitle').value;
+            const description = document.getElementById('tipDescription').value;
+            const category_id = parseInt(document.getElementById('tipCategory').value);
+
+
+            try {
+                const response = await fetch(`${API_BASE}/tips`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title: title,
+                        description: description,
+                        category_id: category_id
+                    })
+                });
+
+
+                if (!response.ok) throw new Error('Failed to add tip');
+
+
+                alert('Tip added successfully!');
+                closeAddTipModal();
+                await loadTips();
+            } catch (error) {
+                alert('Error adding tip');
+                console.error('Error:', error);
+            }
+        }
+
+
+        // Close add tip modal on background click
+        document.getElementById('addTipModal').addEventListener('click', (e) => {
+            if (e.target.id === 'addTipModal') {
+                closeAddTipModal();
+            }
+        });
+
+
+        // Close edit tip modal on background click
+        document.getElementById('editTipModal').addEventListener('click', (e) => {
+            if (e.target.id === 'editTipModal') {
+                closeEditTipModal();
+            }
+        });
+
+
+        // Chat functions
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+                chatWindow.style.display = 'flex';
+            } else {
+                chatWindow.style.display = 'none';
+            }
+        }
+
+
+        async function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messagesContainer = document.getElementById('chat-messages');
+            const question = input.value.trim();
+
+
+            if (!question) return;
+
+
+            messagesContainer.innerHTML += `<div class="message user-msg">${question}</div>`;
+            input.value = '';
+
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+
+            try {
+                const response = await fetch(`${API_BASE}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: question })
+                });
+
+
+                const data = await response.json();
+
+                messagesContainer.innerHTML += `<div class="message bot-msg">${data.response}</div>`;
+            } catch (error) {
+                messagesContainer.innerHTML += `<div class="message bot-msg">מצטער, יש לי תקלה קטנה בחיבור.</div>`;
+                console.error('Error:', error);
+            }
+
+
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+
+        document.getElementById('chat-input')?.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
